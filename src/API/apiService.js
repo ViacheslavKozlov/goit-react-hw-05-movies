@@ -9,15 +9,16 @@ const getTrendingMovies = async () => {
   return movies;
 };
 
-const getSearchMovies = async searchRequest => {
-  const queryLine = `search/movie${APIKEY}&language=en-US&page=1&include_adult=false&query=${searchRequest}`;
+const getSearchMovies = async (searchRequest, page) => {
+  const queryLine = `search/movie${APIKEY}&language=en-US&page=${page}&include_adult=false&query=${searchRequest}`;
   const { data: movies } = await axios.get(queryLine);
   return movies;
 };
 
 const getMovieDetails = async movieId => {
-  const queryLine = `movie/${movieId}/credits${APIKEY}&language=en-US`;
+  const queryLine = `movie/${movieId}${APIKEY}&language=en-US`;
   const { data: movie } = await axios.get(queryLine);
+  // console.log(movie);
   return movie;
 };
 

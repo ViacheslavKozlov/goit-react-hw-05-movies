@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
+import slugify from "slugify";
 import { getTrendingMovies } from "../API/apiService";
 import noPosts from "../images/noPosts.png";
-// import { Link, useLocation } from "react-router-dom";
+
+const createSlug = string =>
+  slugify(string, {
+    lower: true
+  });
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -24,7 +29,7 @@ const Home = () => {
           <li key={id}>
             <Link
               to={{
-                pathname: `/movies/${title}${id}`,
+                pathname: `/movies/${createSlug(`${title} ${id}`)}`,
                 state: {
                   from: {
                     location,

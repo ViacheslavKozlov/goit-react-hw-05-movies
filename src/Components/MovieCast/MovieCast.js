@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getMovieCast } from "../../API/apiService";
 import noPosts from "../../images/noPosts.png";
 
-const MovieCast = movieId => {
+const Cast = ({ movieId }) => {
   const [cast, setCast] = useState(null);
 
   const castId = document.querySelector("cast");
@@ -37,4 +37,4 @@ const MovieCast = movieId => {
   );
 };
 
-export default MovieCast;
+export default Cast;
