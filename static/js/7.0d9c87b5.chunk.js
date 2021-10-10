@@ -1,2 +1,0 @@
-(this["webpackJsonpgoit-react-hw-05-movies"]=this["webpackJsonpgoit-react-hw-05-movies"]||[]).push([[7],{90:function(t,c,e){"use strict";e.r(c);e(0);var i=e.p+"static/media/bluegg.cb8b1316.jpg",s=e(1);c.default=function(){return Object(s.jsx)("img",{src:"".concat(i),alt:"404"})}}}]);
-//# sourceMappingURL=7.0d9c87b5.chunk.js.map

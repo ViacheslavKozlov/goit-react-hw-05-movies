@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://src/pages/404Page/404Page.module.css"],"names":[],"mappings":"AAAA,IACE,aACF,CAEA,2BACE,UAAW,CACX,YAAa,CACb,kBAAmB,CACnB,6BACF","file":"7.c037e110.chunk.css","sourcesContent":["img {\n  display: block;\n}\n\n.imgWrapper {\n  width: 100%;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n"]}

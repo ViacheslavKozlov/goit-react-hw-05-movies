@@ -1,0 +1,2 @@
+(this["webpackJsonpgoit-react-hw-05-movies"]=this["webpackJsonpgoit-react-hw-05-movies"]||[]).push([[7],{92:function(e,t,c){e.exports={imgWrapper:"404Page_imgWrapper__2DpNm"}},96:function(e,t,c){"use strict";c.r(t);c(0);var i=c.p+"static/media/bluegg.586b77cc.jpg",a=c(92),r=c.n(a),s=c(1);t.default=function(){return Object(s.jsx)("div",{className:r.a.imgWrapper,children:Object(s.jsx)("img",{src:"".concat(i),alt:"404"})})}}}]);
+//# sourceMappingURL=7.9fb22706.chunk.js.map

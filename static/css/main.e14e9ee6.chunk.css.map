@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack://src/Components/loader/Loader.module.css"],"names":[],"mappings":"AAAA,8BACE,cAAe,CACf,OAAQ,CACR,QAAS,CACT,sCAAgC,CAAhC,8BACF","file":"main.e14e9ee6.chunk.css","sourcesContent":[".spinnerWrapper {\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  transform: translate(-50%, -50%);\n}\n"]}
