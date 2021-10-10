@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import slugify from "slugify";
-import { getTrendingMovies } from "../API/apiService";
-import noPosts from "../images/noPosts.png";
+import { getTrendingMovies } from "../../API/apiService";
+import noPosts from "../../images/noPosts.jpg";
+import style from "./HomePage.module.css";
 
 const createSlug = string =>
   slugify(string, {
@@ -21,12 +22,13 @@ const Home = () => {
     };
     get();
   }, []);
+
   return (
     <section>
-      <h3>Trends</h3>
-      <ul>
+      <h3 className={style.headline}>Trends</h3>
+      <ul className={style.list}>
         {movies.map(({ id, title, poster_path }) => (
-          <li key={id}>
+          <li className={style.listItem} key={id}>
             <Link
               to={{
                 pathname: `/movies/${createSlug(`${title} ${id}`)}`,
@@ -39,7 +41,7 @@ const Home = () => {
               }}
             >
               <img src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : `${noPosts}`} alt={title} />
-              <p>{title}</p>
+              <p className={style.itemTitle}>{title}</p>
             </Link>
           </li>
         ))}

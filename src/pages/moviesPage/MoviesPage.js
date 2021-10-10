@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation, useHistory } from "react-router-dom";
 import slugify from "slugify";
-import { getSearchMovies } from "../API/apiService";
-import noPosts from "../images/noPosts.png";
+import { getSearchMovies } from "../../API/apiService";
+import PropTypes from "prop-types";
+import noPosts from "../../images/noPosts.jpg";
+import style from "./MoviesPage.module.css";
 
 const createSlug = string =>
   slugify(string, {
@@ -27,7 +29,7 @@ const MoviesPage = () => {
           setSearchMovie("");
           setFoundedMovies(prevFoundedMovies => [...prevFoundedMovies, ...results]);
 
-          if (searchLine.trim() === "" || foundedMovies.length === 0) {
+          if (searchLine.trim() === "" && foundedMovies.length === 0) {
             return console.log(alert(`there r no movies under typed request`));
           }
 
@@ -52,16 +54,16 @@ const MoviesPage = () => {
     if (!normilizedInput) return;
     try {
       const { results } = await getSearchMovies(normilizedInput);
-      console.log(results);
-      setFoundedMovies(results);
+      // console.log(results);
+      setFoundedMovies([]);
       setSearchMovie("");
 
-      if (!results) {
-        return alert(console.log("there r no movies under request"));
+      if (results.length === 0) {
+        return alert("there r no movies under request");
       }
       history.push({ ...location, search: `query=${searchMovie}` });
     } catch (err) {
-      return console.log(alert(`this is the end`));
+      return console.log(alert("this is the end"));
     }
   };
 
@@ -77,14 +79,22 @@ const MoviesPage = () => {
 
   return (
     <section>
-      <form onSubmit={handleSubmit}>
-        <input type="text" value={searchMovie} placeholder={"Type 2 find"} onChange={handleInputChange} />
-        <button type="submit">Search</button>
+      <form className={style.form} onSubmit={handleSubmit}>
+        <input
+          className={style.input}
+          type="text"
+          value={searchMovie}
+          placeholder={"Type 2 find"}
+          onChange={handleInputChange}
+        />
+        <button className={style.btn} type="submit">
+          Search
+        </button>
       </form>
       {foundedMovies && (
-        <ul>
+        <ul className={style.list}>
           {foundedMovies.map(({ id, title, poster_path }) => (
-            <li key={id}>
+            <li className={style.listItem} key={id}>
               <Link
                 to={{
                   pathname: `/movies/${createSlug(`${title} ${id}`)}`,
@@ -96,16 +106,33 @@ const MoviesPage = () => {
                   }
                 }}
               >
-                <img src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : `${noPosts}`} alt={title} />
-                <p>{title}</p>
+                <img
+                  className={style.img}
+                  src={poster_path ? `https://image.tmdb.org/t/p/w300${poster_path}` : `${noPosts}`}
+                  alt={title}
+                />
+                <p className={style.itemTitle}>{title}</p>
               </Link>
             </li>
           ))}
         </ul>
       )}
-      {showButton && <button onClick={handleLoadMoreBtn}>More movies</button>}
+      {showButton && (
+        <button className={style.loadMoreBtn} onClick={handleLoadMoreBtn}>
+          More movies
+        </button>
+      )}
     </section>
   );
+};
+
+MoviesPage.propTypes = {
+  id: PropTypes.number,
+  title: PropTypes.string,
+  poster_path: PropTypes.string,
+  handleSubmit: PropTypes.func,
+  handleInputChange: PropTypes.func,
+  handleLoadMoreBtn: PropTypes.func
 };
 
 export default MoviesPage;

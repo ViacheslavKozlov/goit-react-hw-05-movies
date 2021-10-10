@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 import { getMovieReviews } from "../../API/apiService";
 
 const Reviews = ({ movieId }) => {
@@ -43,6 +44,10 @@ const Reviews = ({ movieId }) => {
       )}
     </section>
   );
+};
+
+Reviews.propTypes = {
+  movieId: PropTypes.string.isRequired
 };
 
 export default Reviews;
